@@ -32,6 +32,7 @@
 		0631C5AD2BCFFB470036910D /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0631C5AC2BCFFB470036910D /* AmountView.swift */; };
 		0631C5AF2BCFFBC80036910D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0631C5AE2BCFFBC80036910D /* UIView+Extension.swift */; };
 		0631C5B12BD032920036910D /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0631C5B02BD032920036910D /* HeaderView.swift */; };
+		06846DD42BD24B1D009E9AFD /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06846DD32BD24B1D009E9AFD /* Tip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		0631C5AC2BCFFB470036910D /* AmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountView.swift; sourceTree = "<group>"; };
 		0631C5AE2BCFFBC80036910D /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		0631C5B02BD032920036910D /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		06846DD32BD24B1D009E9AFD /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 		0631C5572BCFAE9D0036910D /* TipCaliculator */ = {
 			isa = PBXGroup;
 			children = (
+				06846DD22BD24B0F009E9AFD /* model */,
 				0631C5A92BCFC2840036910D /* factory */,
 				0631C5A62BCFBB920036910D /* extension */,
 				0631C5A12BCFBB400036910D /* Config */,
@@ -208,6 +211,14 @@
 				0631C5AA2BCFC2A10036910D /* LabelFactory.swift */,
 			);
 			name = factory;
+			sourceTree = "<group>";
+		};
+		06846DD22BD24B0F009E9AFD /* model */ = {
+			isa = PBXGroup;
+			children = (
+				06846DD32BD24B1D009E9AFD /* Tip.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0631C55D2BCFAE9D0036910D /* CalculatorVC.swift in Sources */,
+				06846DD42BD24B1D009E9AFD /* Tip.swift in Sources */,
 				0631C5962BCFB4540036910D /* LogoView.swift in Sources */,
 				0631C5A32BCFBB5E0036910D /* ThemeColor.swift in Sources */,
 				0631C5A82BCFBBDA0036910D /* UIColor+Extension.swift in Sources */,
