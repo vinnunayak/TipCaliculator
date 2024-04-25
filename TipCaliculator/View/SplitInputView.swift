@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Combine
+import CombineCocoa
 
 class SplitInputView: UIView {
 
@@ -19,6 +21,10 @@ class SplitInputView: UIView {
         let button = buildButton(
             title: "-",
             corners: [.layerMinXMinYCorner, .layerMinXMaxYCorner])
+        button.tapPublisher.flatMap { [unowned self] in
+            Just(spiltSubject.value == 1 ? 1 : spiltSubject.value - 1)
+        }.assign(to: \.value, on: spiltSubject)
+            .store(in: &cancellables)
         return button
     }()
 
@@ -26,6 +32,10 @@ class SplitInputView: UIView {
         let button = buildButton(
             title: "+",
             corners: [.layerMaxXMinYCorner, .layerMaxXMaxYCorner])
+        button.tapPublisher.flatMap { [unowned self] in
+            Just(spiltSubject.value + 1)
+        }.assign(to: \.value, on: spiltSubject)
+            .store(in: &cancellables)
         return button
     }()
 
@@ -48,13 +58,31 @@ class SplitInputView: UIView {
         return stackView
     }()
 
+    private let spiltSubject: CurrentValueSubject<Int,Never> = .init(1)
+    var valuePublisher: AnyPublisher<Int,Never> {
+        return spiltSubject.removeDuplicates().eraseToAnyPublisher()
+    }
+
+    private var cancellables = Set<AnyCancellable>()
+
     init() {
         super.init(frame: .zero)
         layout()
+        observe()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func reset() {
+        spiltSubject.send(1)
+    }
+
+    private func observe() {
+        spiltSubject.sink { [unowned self] quantity in
+            quantityLable.text = quantity.stringValue
+        }.store(in: &cancellables)
     }
 
     private func layout() {
